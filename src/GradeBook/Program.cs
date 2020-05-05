@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace GradeBook
@@ -10,7 +10,7 @@ namespace GradeBook
         {
 
 
-            var book = new Book("Joao's Book");
+            var book = new Book("Joao's Book ");
             book.AddGrade(98.9);
             book.AddGrade(90.5);
             book.AddGrade(100.0);
