@@ -18,7 +18,7 @@ namespace GradeBook
             // var numbers = new [] {12.7, 52.1, 11.5};
             var grades = new List<double>() {12.7, 52.1, 11.5};
             grades.Add(100.01);
-            
+            var str = "test";
             var test = 0.0;
             var highest = double.MinValue;
             var lowest = double.MaxValue;
@@ -31,7 +31,7 @@ namespace GradeBook
                 }
                 lowest = Math.Min(e, lowest);
             }
-            System.Console.WriteLine($"The lowest grade is {lowest}");
+            System.Console.WriteLine($"The lowest grade  is {lowest}");
             System.Console.WriteLine($"The higher score is {highest}");
             test /= grades.Count;
             // Console.WriteLine(grades);
