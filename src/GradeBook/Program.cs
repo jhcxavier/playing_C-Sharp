@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GradeBook
 {
@@ -16,16 +17,16 @@ namespace GradeBook
             // numbers[0] = 12.7;
             // numbers[1] = 52.1;
             // numbers[2] = 11.5;
-            var result = new double[0];
-            // var result = numbers[0];
-            // result += numbers[1];
-            // result += numbers[2];
+            var grades = new List<double>() {12.7, 52.1, 11.5};
+            grades.Add(100.01);
+            
             double test = 0;
-            foreach(double e in numbers)
+            foreach(double e in grades)
             {
                 test += e;
             }
-            System.Console.WriteLine(test);
+            test /= grades.Count;
+            System.Console.WriteLine($"The avarage grade is {test:N1}");
 
             // System.Console.WriteLine(result);
 
