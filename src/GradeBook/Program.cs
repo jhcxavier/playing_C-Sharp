@@ -12,17 +12,24 @@ namespace GradeBook
             // Console.WriteLine(result);
             // System.Console.WriteLine();
 
-            var numbers = new double[3];
-            numbers[0] = 12.7;
-            numbers[1] = 52.1;
-            numbers[2] = 11.5;
+            var numbers = new [] {12.7, 52.1, 11.5};
+            // numbers[0] = 12.7;
+            // numbers[1] = 52.1;
+            // numbers[2] = 11.5;
+            var result = new double[0];
+            // var result = numbers[0];
+            // result += numbers[1];
+            // result += numbers[2];
+            double test = 0;
+            foreach(double e in numbers)
+            {
+                test += e;
+            }
+            System.Console.WriteLine(test);
 
-            var result = numbers[0];
-            result = result + numbers[1];
-            result = result + numbers[2];
-            System.Console.WriteLine(result);
+            // System.Console.WriteLine(result);
 
-
+            
 
 
 
