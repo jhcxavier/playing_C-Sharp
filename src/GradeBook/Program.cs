@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace GradeBook
@@ -14,5 +14,6 @@ namespace GradeBook
             book.AddGrade(100.0);
             book.ShowStatistics();
         }
-    };   
+    };
+   
 }
