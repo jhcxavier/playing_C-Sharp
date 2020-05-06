@@ -3,10 +3,10 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
-    public class BootTests
+    public class BookTests
     {
         [Fact]
-        public void Test1()
+        public void BookCalculatesAnAvarageGrade()
         {
             //arrange
             var book = new Book("");

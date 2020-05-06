@@ -10,6 +10,7 @@ For instance, for adding GradeBook to the unit test GradeBook.Test, using the cm
 
 ### Creating a Solution File
 In the gradebook folder using the cmd:
+1)
 ```
     PS C: dotnet new sln
     PS C: dotnet sln add src\GradeBook\GradeBook.csproj
@@ -17,3 +18,14 @@ In the gradebook folder using the cmd:
 
 ```
 A solution is a structure for organizing projects in Visual Studio. The solution maintains the state information for projects in two files: . sln file (text-based, shared)
+2)
+You can also restore files using 
+```
+    dotnet build
+```
+3)
+Then use:
+```
+    dotnet test
+```
+With that it can be used one single location to do a "dotnet build" and "dotnet test", and all projects will build and all the unit test accross the project will be found and executed.

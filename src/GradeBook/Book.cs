@@ -12,7 +12,7 @@ namespace GradeBook
         public Book(string name)
         {
             grades = new List<double>();
-            this.name = name;
+            Name = name;
         }
         public Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
@@ -41,10 +41,7 @@ namespace GradeBook
             grades.Add(grade);
         }
         private List<double> grades;
-
-        
-
-        private string name;
+        public string Name;
         
     }
 }
