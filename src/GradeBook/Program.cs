@@ -20,9 +20,16 @@ namespace GradeBook
                 var input = Console.ReadLine();
                 if(input == "q"){
                     break;
-                }else{
+                }
+                
+                try{
                     var grade = double.Parse(input);
                     book.AddGrade(grade);
+                    rounds++;
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                     rounds++;
                 }
             }
