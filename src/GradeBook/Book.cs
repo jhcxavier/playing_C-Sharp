@@ -14,6 +14,18 @@ namespace GradeBook
             grades = new List<double>();
             Name = name;
         }
+        public void AddGrade(double grade)
+        {
+            if(grade <= 100 && grade >= 0)
+            {
+                grades.Add(grade);
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid Value");
+            }
+            
+        }
         public Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
         // that is the type of object is going to return, is Statitics.
@@ -23,24 +35,21 @@ namespace GradeBook
             result.High = double.MinValue;
             result.Low = double.MaxValue;
             // var arr = new List<double>(){};
-            foreach(double e in grades)
+            var index = 0;
+            do
             {
-                result.Avarage += e;
-                if(e > result.High){
-                    result.High = e;
-                }
-                result.Low = Math.Min(e, result.Low);
-            }
+                result.Low = Math.Min(grades[index], result.Low);
+                result.Low = Math.Max(grades[index], result.High);
+                result.Avarage += grades[index];
+                index++;
+            }while(index < grades.Count);
             result.Avarage /= grades.Count;
 
             return result;
             
         }
-        public void AddGrade(double grade)
-        {
-            grades.Add(grade);
-        }
-        private List<double> grades;
+        
+        public List<double> grades;
         public string Name;
         
     }

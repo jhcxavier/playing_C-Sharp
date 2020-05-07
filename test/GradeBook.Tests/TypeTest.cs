@@ -6,6 +6,20 @@ namespace GradeBook.Tests
     public class TypeTest
     {
         [Fact]
+        public void BookGreaterThan105()
+        {
+            Book test = new Book("Joao's Book");
+            var num = 100.1;
+            test.AddGrade(num);
+            // var test = GetBook("Joao's Book");
+            
+
+            Assert.Equal(num, test.grades[0]);
+        }
+
+     
+
+        [Fact]
         public void StringBehaveLikeValueType()
         {
             string name = "Joao";
