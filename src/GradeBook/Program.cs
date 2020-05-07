@@ -27,10 +27,19 @@ namespace GradeBook
                     book.AddGrade(grade);
                     rounds++;
                 }
-                catch(Exception ex)
+                catch(ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                     rounds++;
+                }
+                catch(FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    rounds++;
+                }
+                finally
+                {
+                    System.Console.WriteLine("**");
                 }
             }
             // while(!done)
