@@ -9,7 +9,7 @@ namespace GradeBook.Tests
         public void BookGreaterThan105()
         {
             Book test = new Book("Joao's Book");
-            var num = 100.1;
+            var num = 100.0;
             test.AddGrade(num);
             // var test = GetBook("Joao's Book");
             
