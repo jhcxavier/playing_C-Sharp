@@ -3,8 +3,26 @@ using Xunit;
 
 namespace GradeBook.Tests
 {
+    public delegate string WriteLogDelegate(string logMessages);
+
     public class TypeTest
     {
+        [Fact]
+        public void WriteLogDelegateCanPointToMethod()
+        {
+            WriteLogDelegate log;
+
+            log = ReturnMessage;
+
+            var result = log("Hello!");
+            Assert.Equal("Hello!", result);
+
+        }
+        string ReturnMessage(string message)
+        {
+            return message;
+        }
+
         [Fact]
         public void BookGreaterThan105()
         {

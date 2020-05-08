@@ -11,6 +11,7 @@ namespace GradeBook
     {
         public Book(string name)
         {
+            category = "";
             grades = new List<double>();
             Name = name;
         }
@@ -91,5 +92,6 @@ namespace GradeBook
         }
         private string name;
         
+        readonly string category = "Science";
     }
 }
