@@ -5,14 +5,27 @@ namespace GradeBook
 {
     // public delegate void GradeAddedDelegate
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
+    public class NamedObject
+    {
+        public NamedObject(string name)
+        {
+            Name = name;
+        }
 
-    public class Book
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+
+    public class Book : NamedObject
     //if you do not specify the access modifier, this class will be accessed just in this project 
     //which will be "internal class Book"
     // if we want to expose the class for the unit test we need to use "public class Book"
     // This is because the unit testing is outside src folder, in a different project (Good pratice)
     {
-        public Book(string name)
+        public Book(string name) : base(name)
         {
             category = "";
             grades = new List<double>();
@@ -95,10 +108,6 @@ namespace GradeBook
         
         public List<double> grades;
 
-        public string Name
-        {
-            get; set;
-        }
         private string name;
         
         readonly string category = "Science";

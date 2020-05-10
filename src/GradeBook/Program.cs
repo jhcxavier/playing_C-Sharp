@@ -10,6 +10,8 @@ namespace GradeBook
         {
             var book = new Book("Joao's Book");
             book.GradeAdded += OnGradeAdded;
+        
+            
             
             var rounds = 1;
             for(var i = 0; i<rounds; i++)
