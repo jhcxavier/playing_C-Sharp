@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GradeBook
 {
+    // public delegate void GradeAddedDelegate
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
     public class Book
     //if you do not specify the access modifier, this class will be accessed just in this project 
     //which will be "internal class Book"
@@ -35,6 +38,11 @@ namespace GradeBook
             if(grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
+                //...
             }
             else
             {
@@ -42,6 +50,7 @@ namespace GradeBook
             }
             
         }
+        public event GradeAddedDelegate GradeAdded;
         public Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
         // that is the type of object is going to return, is Statitics.
