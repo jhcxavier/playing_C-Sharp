@@ -6,60 +6,31 @@ namespace GradeBook
 {
     // public delegate void GradeAddedDelegate
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
-
-    public class NamedObject
-    {
-        public NamedObject(string name)
-        {
-            Name = name;
-        }
-
-        public string Name
-        {
-            get;
-            set;
-        }
-    }
+    
     public interface IBook
     {
         void AddGrade(double grade);
-        object GetStatistcs();
-
-        Statistcs Statistcs { get; }
-        string Name {get;}
+        Statistcs GetStatistics();
+                  
+        string Name { get; }
         event GradeAddedDelegate GradeAdded;
     }
-    public abstract class Book : NamedObject, IBook
-    {
-        public Book(string name) : base(name)
+   public abstract class Book : NamedObject, IBook
+   {
+        protected Book(string name) : base(name)
         {
         }
 
-        public abstract event GradeAddedDelegate GradeAdded;
+        public virtual event GradeAddedDelegate GradeAdded;
 
         public abstract void AddGrade(double grade);
 
-        public abstract Statistcs GetStatistcs();
-    }
-    public class DiskBook : Book
-    {
-        public DiskBook(string name) : base(name)
+        public virtual Statistcs GetStatistics()
         {
-
-        }
-
-        public override event GradeAddedDelegate GradeAdded;
-
-        public override void AddGrade(double grade)
-        {
-            File.AppendText($"{Name}.txt");
-        }
-
-        public override Statistcs Statistcs
-        {
-            get;
+            throw new NotImplementedException();
         }
     }
+    
     public class InMemoryBook : Book
     //if you do not specify the access modifier, this class will be accessed just in this project 
     //which will be "internal class Book"
@@ -105,7 +76,7 @@ namespace GradeBook
             
         }
         public override event GradeAddedDelegate GradeAdded;
-        public Statistcs GetStatistics()
+        public  override Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
         // that is the type of object is going to return, is Statitics.
         {
@@ -147,7 +118,6 @@ namespace GradeBook
             
         }
 
-        public override Statistcs Statistcs => throw new NotImplementedException();
 
         public List<double> grades;
 
