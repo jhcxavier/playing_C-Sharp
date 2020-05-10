@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GradeBook
 {
@@ -22,7 +23,9 @@ namespace GradeBook
     public interface IBook
     {
         void AddGrade(double grade);
-        Statistcs GetStatistcs();
+        object GetStatistcs();
+
+        Statistcs Statistcs { get; }
         string Name {get;}
         event GradeAddedDelegate GradeAdded;
     }
@@ -32,13 +35,29 @@ namespace GradeBook
         {
         }
 
-        public virtual event GradeAddedDelegate GradeAdded;
+        public abstract event GradeAddedDelegate GradeAdded;
 
         public abstract void AddGrade(double grade);
 
-        public virtual Statistcs GetStatistcs()
+        public abstract Statistcs GetStatistcs();
+    }
+    public class DiskBook : Book
+    {
+        public DiskBook(string name) : base(name)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public override event GradeAddedDelegate GradeAdded;
+
+        public override void AddGrade(double grade)
+        {
+            File.AppendText($"{Name}.txt");
+        }
+
+        public override Statistcs Statistcs
+        {
+            get;
         }
     }
     public class InMemoryBook : Book
@@ -127,7 +146,9 @@ namespace GradeBook
             return result;
             
         }
-        
+
+        public override Statistcs Statistcs => throw new NotImplementedException();
+
         public List<double> grades;
 
         private string name;
