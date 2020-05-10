@@ -8,31 +8,44 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            var book = new Book("Joao's Book");
+            var book = new InMemoryBook("Joao's Book");
             book.GradeAdded += OnGradeAdded;
-        
+
+            EnterGrades(book);
+
+            var stats = book.GetStatistics();
             
-            
+            Console.WriteLine($"For the book named {book.Name}");
+            System.Console.WriteLine($"The lowest grade  is {stats.Low}");
+            System.Console.WriteLine($"The higher score is {stats.High}");
+            Console.WriteLine($"The avarage grade is {stats.Avarage:N1}");
+            Console.WriteLine($"The letter grade is {stats.Letter:N1}");
+        }
+
+        private static void EnterGrades(IBook book)
+        {
             var rounds = 1;
-            for(var i = 0; i<rounds; i++)
+            for (var i = 0; i < rounds; i++)
             {
                 System.Console.WriteLine("Enter a grade or 'q' to quit");
                 var input = Console.ReadLine();
-                if(input == "q"){
+                if (input == "q")
+                {
                     break;
                 }
-                
-                try{
+
+                try
+                {
                     var grade = double.Parse(input);
                     book.AddGrade(grade);
                     rounds++;
                 }
-                catch(ArgumentException ex)
+                catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                     rounds++;
                 }
-                catch(FormatException ex)
+                catch (FormatException ex)
                 {
                     Console.WriteLine(ex.Message);
                     rounds++;
@@ -49,13 +62,8 @@ namespace GradeBook
             //     var grade = double.Parse(input);
             //     book.AddGrade(grade);
             // }
-            var stats = book.GetStatistics();
-            Console.WriteLine($"For the book named {book.Name}");
-            System.Console.WriteLine($"The lowest grade  is {stats.Low}");
-            System.Console.WriteLine($"The higher score is {stats.High}");
-            Console.WriteLine($"The avarage grade is {stats.Avarage:N1}");
-            Console.WriteLine($"The letter grade is {stats.Letter:N1}");
         }
+
         static void OnGradeAdded(object sender, EventArgs e)
         {
             Console.WriteLine("A grade was added!");

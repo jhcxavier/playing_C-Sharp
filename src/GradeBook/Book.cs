@@ -5,27 +5,38 @@ namespace GradeBook
 {
     // public delegate void GradeAddedDelegate
     public delegate void GradeAddedDelegate(object sender, EventArgs args);
-    public class NamedObject
+    
+    public interface IBook
     {
-        public NamedObject(string name)
+        void AddGrade(double grade);
+        Statistcs GetStatistics();
+                  
+        string Name { get; }
+        event GradeAddedDelegate GradeAdded;
+    }
+   public abstract class Book : NamedObject, IBook
+   {
+        protected Book(string name) : base(name)
         {
-            Name = name;
         }
 
-        public string Name
+        public virtual event GradeAddedDelegate GradeAdded;
+
+        public abstract void AddGrade(double grade);
+
+        public virtual Statistcs GetStatistics()
         {
-            get;
-            set;
+            throw new NotImplementedException();
         }
     }
-
-    public class Book : NamedObject
+    
+    public class InMemoryBook : Book
     //if you do not specify the access modifier, this class will be accessed just in this project 
     //which will be "internal class Book"
     // if we want to expose the class for the unit test we need to use "public class Book"
     // This is because the unit testing is outside src folder, in a different project (Good pratice)
     {
-        public Book(string name) : base(name)
+        public InMemoryBook(string name) : base(name)
         {
             category = "";
             grades = new List<double>();
@@ -46,7 +57,7 @@ namespace GradeBook
                     break;
             }
         }
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             if(grade <= 100 && grade >= 0)
             {
@@ -63,8 +74,8 @@ namespace GradeBook
             }
             
         }
-        public event GradeAddedDelegate GradeAdded;
-        public Statistcs GetStatistics()
+        public override event GradeAddedDelegate GradeAdded;
+        public  override Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
         // that is the type of object is going to return, is Statitics.
         {
@@ -105,7 +116,8 @@ namespace GradeBook
             return result;
             
         }
-        
+
+
         public List<double> grades;
 
         private string name;
