@@ -8,6 +8,11 @@ namespace GradeBook
 
     public class NamedObject
     {
+        public NamedObject(string name)
+        {
+            Name = name;
+        }
+
         public string Name
         {
             get;
@@ -20,7 +25,7 @@ namespace GradeBook
     // if we want to expose the class for the unit test we need to use "public class Book"
     // This is because the unit testing is outside src folder, in a different project (Good pratice)
     {
-        public Book(string name)
+        public Book(string name) : base(name)
         {
             category = "";
             grades = new List<double>();
