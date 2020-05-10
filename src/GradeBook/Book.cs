@@ -19,14 +19,27 @@ namespace GradeBook
             set;
         }
     }
-    public abstract class Book : NamedObject
+    public interface IBook
+    {
+        void AddGrade(double grade);
+        Statistcs GetStatistcs();
+        string Name {get;}
+        event GradeAddedDelegate GradeAdded;
+    }
+    public abstract class Book : NamedObject, IBook
     {
         public Book(string name) : base(name)
         {
         }
 
+        public virtual event GradeAddedDelegate GradeAdded;
+
         public abstract void AddGrade(double grade);
-        
+
+        public virtual Statistcs GetStatistcs()
+        {
+            throw new NotImplementedException();
+        }
     }
     public class InMemoryBook : Book
     //if you do not specify the access modifier, this class will be accessed just in this project 
@@ -72,7 +85,7 @@ namespace GradeBook
             }
             
         }
-        public event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
         public Statistcs GetStatistics()
         // we use the class identifier Statistics. So this is a public method named GetStatistics, and its return type, 
         // that is the type of object is going to return, is Statitics.

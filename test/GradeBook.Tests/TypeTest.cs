@@ -35,7 +35,7 @@ namespace GradeBook.Tests
         [Fact]
         public void BookGreaterThan105()
         {
-            Book test = new Book("Joao's Book");
+            InMemoryBook test = new InMemoryBook("Joao's Book");
             var num = 100.0;
             test.AddGrade(num);
             // var test = GetBook("Joao's Book");
@@ -90,9 +90,9 @@ namespace GradeBook.Tests
             Assert.Equal("New Name", book1.Name);
             
         }
-        private void GetBookSetName(ref Book book, string name)
+        private void GetBookSetName(ref InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
         [Fact]
         public void CSharpIsPassByValue()
@@ -103,9 +103,9 @@ namespace GradeBook.Tests
             Assert.Equal("Book 1", book1.Name);
             
         }
-        private void GetBookSetName(Book book, string name)
+        private void GetBookSetName(InMemoryBook book, string name)
         {
-            book = new Book(name);
+            book = new InMemoryBook(name);
         }
 
         [Fact]
@@ -122,7 +122,7 @@ namespace GradeBook.Tests
             
         }
 
-        private void SetName(Book book, string name)
+        private void SetName(InMemoryBook book, string name)
         {
             book.Name = name;
         }
@@ -147,9 +147,9 @@ namespace GradeBook.Tests
             Assert.True(Object.ReferenceEquals(book1, book2));  
         }
 
-        Book GetBook(string name)
+        InMemoryBook GetBook(string name)
         {
-            return new Book(name);
+            return new InMemoryBook(name);
         }
         // Book GetBook(string name)
         // {

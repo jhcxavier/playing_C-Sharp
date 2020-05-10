@@ -11,7 +11,8 @@ namespace GradeBook
             var book = new InMemoryBook("Joao's Book");
             book.GradeAdded += OnGradeAdded;
 
-            
+            EnterGrades(book);
+
             var stats = book.GetStatistics();
             Console.WriteLine($"For the book named {book.Name}");
             System.Console.WriteLine($"The lowest grade  is {stats.Low}");
@@ -22,6 +23,7 @@ namespace GradeBook
 
         private static void EnterGrades(Book book)
         {
+
             var rounds = 1;
            
             for (var i = 0; i < rounds; i++)
