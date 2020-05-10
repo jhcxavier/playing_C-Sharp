@@ -9,9 +9,7 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var book = new Book("Joao's Book");
-            // book.AddGrade(98.9);
-            // book.AddGrade(90.5);
-            // book.AddGrade(100.0);
+            book.GradeAdded += OnGradeAdded;
             
             var rounds = 1;
             for(var i = 0; i<rounds; i++)
@@ -49,16 +47,16 @@ namespace GradeBook
             //     var grade = double.Parse(input);
             //     book.AddGrade(grade);
             // }
-
-
-
-
             var stats = book.GetStatistics();
             Console.WriteLine($"For the book named {book.Name}");
             System.Console.WriteLine($"The lowest grade  is {stats.Low}");
             System.Console.WriteLine($"The higher score is {stats.High}");
             Console.WriteLine($"The avarage grade is {stats.Avarage:N1}");
             Console.WriteLine($"The letter grade is {stats.Letter:N1}");
+        }
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine("A grade was added!");
         }
     };
    

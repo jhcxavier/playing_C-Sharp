@@ -22,6 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "\\\\srvfs1\\SRVDATA\\Devsoft\\NCCINuGetCommunity": {},
+          "\\\\srvfs1\\SRVDATA\\Devsoft\\NCCINuGetEnterprise": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
